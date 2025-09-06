@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charisma Watches</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+  <style>
+   :root{
+  --gold: #bd7d17e5;
+  --muted: #a8b3c7;
+  --bg: #0b1320; /* deep navy fallback */
+  --bg-photo: url('images/background.png');
+}
+
+*, *::before, *::after{
+   box-sizing: border-box; 
+  }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+
+  /* overlay + photo as 2 layers, so we can size them separately */
+  --bg-overlay: linear-gradient(rgba(7,12,22,.72), rgba(7,12,22,.72));
+  background-image: var(--bg-overlay), var(--bg-photo);
+  background-position: center, center;
+  background-size: cover, cover;
+  background-attachment: fixed, fixed;
+}
+
+
+.container{
+  width: min(1200px, 92%);
+  margin-inline:auto;
+}
+
+header{
+  position:sticky;
+  top: 0;
+  z-index:10;
+  background: linear-gradient(180deg, rgba(11,19,32,.0),rgba(11,19,32,.0));
+  backdrop-filter:blur(6px) saturate(140%);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.header-inner{
+  display:flex;
+  align-items: center;
+  justify-content:space-between;
+  padding:12px 0;
+  flex-direction: column;
+}
+
+.brand{
+  font-weight:600; 
+  letter-spacing: .4px;
+  margin-bottom: 10px;
+  font-size: 100px;
+  font-family: "Monsieur La Doulaise", cursive;
+  color:#B67811;
+
+
+}
+
+.nav-links{
+  display:flex;
+  gap:24px;
+}
+.nav-links a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+}
+  
+.nav-links a:hover, .nav-links a:focus{
+  color: #fff;
+  outline:none;
+}
+
+.hero{
+  padding: clamp(96px, 12vw, 160px) 0 64px;
+}
+
+.cta{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center; 
+}
+
+.hero-copy{
+  max-width: 56ch;
+  margin-inline: auto;
+  text-align: center; 
+}
+
+.hero-copy h1{
+  font-family: "Playfair Display", serif;
+}
+
+.sub{ color: var(--muted); margin: 0 0 18px; }
+
+.cta{ display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+.btn{
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  transition: transform .2s ease, opacity .2s ease;
+}
+.btn:hover{ transform: translateY(-1px); opacity: .95; }
+
+.btn.gold{ background: var(--gold); border: none; color: #171717; }
+
+
+@media (max-width: 900px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .hero-copy{ text-align: center; margin-inline: auto; }
+}
+
+/* section headings */
+.section-title{
+  font-family: "Playfair Display", serif;
+  font-size: clamp(24px, 3.4vw, 36px);
+  margin: 0 0 6px;
+  text-align: center;
+}
+.section-sub{
+  color: var(--muted);
+  margin: 0 0 22px;
+  text-align: center;
+}
+
+/* product grid */
+.product-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 190px)); /* smaller */
+  gap: 100px;
+  justify-content: center;
+}
+
+
+.catalog .container{ max-width: 980px; }
+
+.card{
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  transition: transform .18s ease;
+  backdrop-filter: blur(2px);
+}
+.card:hover{ transform: translateY(-3px); }
+
+.card img{
+  width: 100%;
+  aspect-ratio: 4 / 5;   /* consistent portrait shape */
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.card-title{ margin: 4px 0 2px; font-size: 16px; }
+.price{ color: var(--gold); font-weight: 700; margin: 0; font-size: 14px; }
+
+/* (All hero-related CSS removed as requested) */
+
+#women { --gold: #d9a6c1;
+margin-top: 50px; } /* soft rosy gold just for this section */
+
+/* footer (about merged in) */
+.site-footer{
+  margin-top: 200px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 40px 0 24px;
+  background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,0));
+  backdrop-filter: blur(4px);
+}
+
+.footer-about{
+  max-width: 900px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.footer-bottom{
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 16px;
+}
+
+.footer-brand{ color: var(--muted); }
+
+.footer-links{ display: flex; gap: 16px; }
+.footer-links a{ color: var(--muted); text-decoration: none; }
+.footer-links a:hover, .footer-links a:focus{ color: #fff; outline: none; }
+
+
+@media (max-width: 900px){
+  body{ background-attachment: scroll; }
+}
+
+/* Header: shrink logo, wrap/center nav, friendlier taps */
+@media (max-width: 900px){
+  .brand{ font-size: clamp(48px, 16vw, 72px); margin-bottom: 6px; }
+  .nav-links{
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  .nav-links a{
+    padding: 6px 6px;
+    font-size: 14px;
+  }
+}
+
+/* Hero: comfy spacing + readable sizes on phone */
+@media (max-width: 900px){
+  .hero{ padding: 72px 0 48px; }
+  .hero-copy h1{ font-size: clamp(28px, 8vw, 42px); }
+  .sub{ font-size: 14px; }
+  .btn{ padding: 10px 14px; font-size: 14px; }
+}
+
+/* Catalog grids: smaller cards, centered; 2-up → 1-up on tiny screens */
+@media (max-width: 900px){
+  .catalog .container{ max-width: 100%; }
+  .product-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 per row */
+    gap: 12px;
+    justify-content: center;
+  }
+  .card{ padding: 10px; }
+  .card-title{ font-size: 14px; }
+  .price{ font-size: 13px; }
+}
+@media (max-width: 420px){
+  .product-grid{ grid-template-columns: 1fr; }      /* 1 per row */
+  .nav-links{ gap: 8px; }
+  .brand{ font-size: clamp(40px, 18vw, 64px); }
+}
+
+/* Footer: stack nicely */
+@media (max-width: 900px),(orientation: portrait){
+  
+ :root{ --bg-photo: url('images/209.png'); }
+  body{ background-attachment: scroll; }
+
+  
+  .footer-bottom{
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-links{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+/* phones: swap to portrait image, keep it fixed, and show more of the photo */
+@media (max-width: 900px), (orientation: portrait){
+  :root{ --bg-photo: url('images/209.png'); } /* use your actual filename */
+  body{
+    background-attachment: fixed, fixed;      /* you asked for fixed */
+    background-position: center top, center;  /* nudge focal point */
+    background-size: cover, 50% auto;        /* overlay covers; image scaled to viewport width (less zoom) */
+  }
+}
+
+
+  </style>
+</head>
+<body>
+    <header>
+      <div class = "container header-inner">
+     <div class="brand">Charisma</div>
+      <nav>
+        <div class="nav-links">
+          <a href="#men">Men</a>
+          <a href="#women">Women</a>
+          <a href="#about">About Us</a>
+        </div>
+      </nav>
+      </div>
+    </header>
+
+    <!-- ----------------------------- -->
+    <main>
+      <section id="hero" class="hero">
+  <div class="container">
+    <div class="hero-copy">
+      <h1>Presence</h1>
+      <p class="sub">Quality time... is the ultimate luxury.</p>
+      <div class="cta">
+        <a class="btn gold" href="#men">Shop Collection</a>
+        <a class="btn" href="#about">Our Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+      <!-- ----------------------------- -->
+      <section id="men" class="catalog">
+  <div class="container">
+    <h2 class="section-title">Men</h2>
+    <p class="section-sub">Bold, Precise, Everyday-Ready.</p>
+
+    <div class="product-grid">
+      <article class="card">
+        <img src="images/men's watches/brown watch.png" alt="Navy dial with brown leather strap">
+        <h3 class="card-title">Leather Dile</h3>
+        <p class="price">$690</p>
+      </article>
+
+      <article class="card">
+        <img src="images/men's watches/maroon watch.png" alt="Maroon dial with black leather strap">
+        <h3 class="card-title">Maroon King</h3>
+        <p class="price">$690</p>
+      </article>
+
+      <article class="card">
+        <img src="images/men's watches/silver chain watch.png" alt="Navy dial with steel bracelet">
+        <h3 class="card-title">Steel Royale</h3>
+        <p class="price">$760</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+      <!-- ----------------------------- -->
+      <section id="women" class="catalog">
+  <div class="container">
+    <h2 class="section-title">Women</h2>
+    <p class="section-sub">Elegant, Modern, Effortless.</p>
+
+    <div class="product-grid">
+      <article class="card">
+        <img src="images/women's watches/gold watch.png" alt="Rose-gold case on leather strap">
+        <h3 class="card-title">Elizabeth Gold</h3>
+        <p class="price">$680</p>
+      </article>
+
+      <article class="card">
+        <img src="images/women's watches/rose gold watch.png" alt="Burgundy dial on leather strap">
+        <h3 class="card-title">Gold Plus</h3>
+        <p class="price">$640</p>
+      </article>
+
+      <article class="card">
+        <img src="images/women's watches/silver chain watch.png" alt="Silver mesh bracelet with navy dial">
+        <h3 class="card-title">Silver Mesh</h3>
+        <p class="price">$720</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+      <!-- ----------------------------- -->
+     <footer id="about" class="site-footer">
+  <div class="container footer-about">
+    <h2 class="section-title">About Us</h2>
+    <p class="section-sub">
+      Charisma blends modern design with refined craftsmanship to create watches
+      that feel effortless every day. From sapphire crystals to 316L steel, we
+      obsess the details so you can simply wear the presence.
+    </p>
+  </div>
+
+  <div class="container footer-bottom">
+    <div class="footer-brand">© 2025 Charisma</div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#men">Men</a>
+      <a href="#women">Women</a>
+      <a href="#hero">Back to top</a>
+    </nav>
+  </div>
+</footer>
+
+      
+    </main>
+  </body>
+</html>
