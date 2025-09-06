@@ -33,6 +33,7 @@ body{
   background-position: center, center;
   background-size: cover, cover;
   background-attachment: fixed, fixed;
+  background-repeat:no-repeat, no-repeat;
 }
 
 
@@ -215,34 +216,37 @@ margin-top: 50px; } /* soft rosy gold just for this section */
 .footer-links a:hover, .footer-links a:focus{ color: #fff; outline: none; }
 
 
+/* ==================== MOBILE (≤900px) ==================== */
 @media (max-width: 900px){
-  body{ background-attachment: scroll; }
-}
+  /* Background: one fixed image that covers, no tiling */
+  body{
+    background-image:
+      linear-gradient(rgba(7,12,22,.72), rgba(7,12,22,.72)),
+      url('images/209.png');              /* ← use your mobile image filename */
+    background-size: cover, cover;
+    background-position: center top, center top;
+    background-attachment: fixed, fixed;
+    background-repeat: no-repeat, no-repeat;
+  }
 
-/* Header: shrink logo, wrap/center nav, friendlier taps */
-@media (max-width: 900px){
-  .brand{ font-size: clamp(48px, 16vw, 72px); margin-bottom: 6px; }
+  /* Header */
+  .header-inner{ padding: 10px 0; gap: 6px; }
+  .brand{ font-size: clamp(40px, 18vw, 72px); margin-bottom: 6px; }
   .nav-links{
     flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
   }
-  .nav-links a{
-    padding: 6px 6px;
-    font-size: 14px;
-  }
-}
+  .nav-links a{ padding: 6px; font-size: 14px; }
 
-/* Hero: comfy spacing + readable sizes on phone */
-@media (max-width: 900px){
+  /* Hero */
   .hero{ padding: 72px 0 48px; }
+  .hero-copy{ text-align: center; margin-inline: auto; }
   .hero-copy h1{ font-size: clamp(28px, 8vw, 42px); }
   .sub{ font-size: 14px; }
   .btn{ padding: 10px 14px; font-size: 14px; }
-}
 
-/* Catalog grids: smaller cards, centered; 2-up → 1-up on tiny screens */
-@media (max-width: 900px){
+  /* Catalog (Men/Women) */
   .catalog .container{ max-width: 100%; }
   .product-grid{
     grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 per row */
@@ -252,20 +256,8 @@ margin-top: 50px; } /* soft rosy gold just for this section */
   .card{ padding: 10px; }
   .card-title{ font-size: 14px; }
   .price{ font-size: 13px; }
-}
-@media (max-width: 420px){
-  .product-grid{ grid-template-columns: 1fr; }      /* 1 per row */
-  .nav-links{ gap: 8px; }
-  .brand{ font-size: clamp(40px, 18vw, 64px); }
-}
 
-/* Footer: stack nicely */
-@media (max-width: 900px),(orientation: portrait){
-  
- :root{ --bg-photo: url('images/209.png'); }
-  body{ background-attachment: scroll; }
-
-  
+  /* Footer */
   .footer-bottom{
     flex-direction: column;
     align-items: center;
@@ -278,15 +270,13 @@ margin-top: 50px; } /* soft rosy gold just for this section */
   }
 }
 
-/* phones: swap to portrait image, keep it fixed, and show more of the photo */
-@media (max-width: 900px), (orientation: portrait){
-  :root{ --bg-photo: url('images/209.png'); } /* use your actual filename */
-  body{
-    background-attachment: fixed, fixed;      /* you asked for fixed */
-    background-position: center top, center;  /* nudge focal point */
-    background-size: cover, 50% auto;        /* overlay covers; image scaled to viewport width (less zoom) */
-  }
+/* ==================== VERY SMALL (≤420px) ==================== */
+@media (max-width: 420px){
+  .product-grid{ grid-template-columns: 1fr; }  /* 1 per row */
+  .nav-links{ gap: 8px; }
+  .brand{ font-size: clamp(36px, 18vw, 60px); }
 }
+
 
 
   </style>
@@ -400,3 +390,4 @@ margin-top: 50px; } /* soft rosy gold just for this section */
     </main>
   </body>
 </html>
+
