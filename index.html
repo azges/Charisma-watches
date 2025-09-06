@@ -277,6 +277,33 @@ margin-top: 50px; } /* soft rosy gold just for this section */
   .brand{ font-size: clamp(36px, 18vw, 60px); }
 }
 
+/* FIX for mobile tiling with fixed backgrounds (iOS-safe) */
+@media (max-width: 900px){
+  /* turn off the body's own background so it can't tile */
+  body{
+    background: transparent !important;
+    position: relative; /* create stacking context for ::before */
+  }
+
+  /* draw a fixed, full-viewport background behind everything */
+  body::before{
+    content: "";
+    position: fixed;
+    inset: 0;               /* top:0; right:0; bottom:0; left:0 */
+    z-index: -1;            /* behind page content */
+    pointer-events: none;
+
+    background-image:
+      linear-gradient(rgba(7,12,22,.72), rgba(7,12,22,.72)),
+      url('images/209.png');            /* your mobile image */
+    background-size: cover;             /* cover the viewport */
+    background-position: center top;
+    background-repeat: no-repeat;
+
+    /* iOS rendering nudge */
+    transform: translateZ(0);
+  }
+}
 
 
   </style>
@@ -390,4 +417,5 @@ margin-top: 50px; } /* soft rosy gold just for this section */
     </main>
   </body>
 </html>
+
 
